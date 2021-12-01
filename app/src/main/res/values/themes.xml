@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.WorkOutTracker" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/main_color</item>
+        <item name="colorPrimaryVariant">@color/main_color_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/main_color</item>
+        <item name="colorSecondaryVariant">@color/main_color_dark</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:windowBackground">@color/main_color</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="TEXT_LARGE">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:fontFamily">@font/gilroy_bold_600</item>
+    </style>
+
+    <style name="TEXT_SMALL" parent="TEXT_LARGE">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/gilroy_regular_400</item>
+    </style>
+
+</resources>
