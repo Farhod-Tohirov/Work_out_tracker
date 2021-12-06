@@ -22,4 +22,9 @@ public class DailyData {
     public void setTime(String time) {
         this.time = time;
     }
+
+    public DailyData(int id, String time) {
+        this.id = id;
+        this.time = time;
+    }
 }
