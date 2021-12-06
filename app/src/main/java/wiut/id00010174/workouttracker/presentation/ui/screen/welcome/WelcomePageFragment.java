@@ -41,7 +41,7 @@ public class WelcomePageFragment extends Fragment {
     }
 
     private void loadViews() {
-
+        viewModel.createSampleDataBase();
     }
 
     private void loadObservers() {

@@ -1,5 +1,7 @@
 package wiut.id00010174.workouttracker.data.local.room.dao;
 
+import static androidx.room.OnConflictStrategy.REPLACE;
+
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -18,6 +20,6 @@ public interface DailyDao {
     @Query("SELECT * FROM daily_table")
     List<DailyData> getDailyData();
 
-    @Insert
+    @Insert(onConflict = REPLACE)
     void insertAll(List<DailyData> list);
 }
