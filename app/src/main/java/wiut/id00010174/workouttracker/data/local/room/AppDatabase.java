@@ -6,16 +6,16 @@ import androidx.room.RoomDatabase;
 
 import kotlin.jvm.Volatile;
 import wiut.id00010174.workouttracker.app.App;
-import wiut.id00010174.workouttracker.data.local.room.dao.DailyDao;
-import wiut.id00010174.workouttracker.data.local.room.entity.DailyData;
+import wiut.id00010174.workouttracker.data.local.room.dao.ProgramDao;
+import wiut.id00010174.workouttracker.data.local.room.entity.ProgramData;
 
 /**
  * Created by Farhod Tohirov on 01-December-2021, 17-17
  **/
-@Database(entities = DailyData.class, version = 1)
+@Database(entities = ProgramData.class, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
-    public abstract DailyDao dailyDao();
+    public abstract ProgramDao programDao();
 
     @Volatile
     private static AppDatabase INSTANCE;

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/CARD_INPUT_STYLE"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TEXT_LARGE"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="@string/about_program" />
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="8dp"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_baseline_close_24"
+                app:tint="@color/black" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <include
+            android:id="@+id/programData"
+            layout="@layout/layout_program_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/updateButton"
+                style="@style/MAIN_BUTTON"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:text="@string/update"
+                app:icon="@drawable/ic_baseline_update_24"
+                app:iconGravity="textStart" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/deleteButton"
+                style="@style/MAIN_BUTTON"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="@string/delete"
+                app:icon="@drawable/ic_baseline_delete_sweep_24"
+                app:iconGravity="textStart" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</com.google.android.material.card.MaterialCardView>

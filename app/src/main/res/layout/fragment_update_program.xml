@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".presentation.ui.screen.home.programs.add_program.AddProgramFragment">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:tint="@color/black" />
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/TEXT_LARGE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/edit_program" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?android:actionBarSize"
+        android:fillViewport="true">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView style="@style/CARD_INPUT_STYLE">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TEXT_INPUT_LAYOUT"
+                    android:hint="@string/program_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/title"
+                        style="@style/INPUT_EDIT_TEXT" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView style="@style/CARD_INPUT_STYLE">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TEXT_INPUT_LAYOUT"
+                    android:hint="@string/started_time">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/startedTime"
+                        style="@style/INPUT_EDIT_TEXT"
+                        android:focusable="false"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView style="@style/CARD_INPUT_STYLE">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TEXT_INPUT_LAYOUT"
+                    android:hint="@string/finished_time">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/finishedTime"
+                        style="@style/INPUT_EDIT_TEXT"
+                        android:focusable="false"
+                        android:inputType="none" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView style="@style/CARD_INPUT_STYLE">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TEXT_INPUT_LAYOUT"
+                    android:hint="@string/number_of_times">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/numberOfTimes"
+                        style="@style/INPUT_EDIT_TEXT"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView style="@style/CARD_INPUT_STYLE">
+
+                <Spinner
+                    android:id="@+id/experienceList"
+                    style="@style/INPUT_SPINNER"
+                    android:entries="@array/experience"
+                    android:spinnerMode="dropdown" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView style="@style/CARD_INPUT_STYLE">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TEXT_INPUT_LAYOUT"
+                    android:hint="@string/additional_notes"
+                    android:minHeight="120dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/moreInfo"
+                        style="@style/INPUT_EDIT_TEXT"
+                        android:gravity="top" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/createButton"
+                style="@style/MAIN_BUTTON"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/save" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
+</FrameLayout>

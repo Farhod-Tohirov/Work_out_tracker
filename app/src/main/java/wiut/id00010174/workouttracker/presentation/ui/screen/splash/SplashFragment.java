@@ -33,7 +33,7 @@ public class SplashFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         navController = Navigation.findNavController(view);
         try {
-            new CountDownTimer(2000, 10) {
+            new CountDownTimer(1000, 10) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                 }

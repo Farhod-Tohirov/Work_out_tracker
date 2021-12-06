@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CARD_INPUT_STYLE"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/light_gray">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/experience"
+            style="@style/TEXT_SMALL"
+            android:layout_width="wrap_content"
+            android:textColor="@color/gray"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/numberOfTimes"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Experience: Excellent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/numberOfTimes"
+            style="@style/TEXT_SMALL"
+            android:layout_width="wrap_content"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@id/experience"
+            app:layout_constraintLeft_toRightOf="@id/experience"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/experience"
+            tools:text="10 times" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title"
+            style="@style/TEXT_LARGE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/experience"
+            tools:text="@string/app_name" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/subTitle"
+            style="@style/TEXT_SMALL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="2dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="jdlsa jlkdja lksjdkl jaslkjd lk;jsdfaj sdjflkj lskjf kadsjfk jdk haldjkf hdjshf dsha ahskjfh kjasdhfk ahsdkjf hlasdkhf jsdah jfhladsj h asjkdfhkjsdh" />
+
+        <ImageView
+            android:id="@+id/ic_calendar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/schedule"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subTitle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/startFinishTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/ic_calendar"
+            app:layout_constraintLeft_toRightOf="@id/ic_calendar"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ic_calendar"
+            tools:text="20.03.2020 - 10.12.2021" />
+
+        <ImageView
+            android:id="@+id/statusImage"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/awful"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

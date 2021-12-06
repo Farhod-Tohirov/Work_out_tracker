@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'dagger.hilt.android.plugin'
+    id "androidx.navigation.safeargs"
 }
 
 android {
@@ -62,4 +63,8 @@ dependencies {
     // Java language implementation
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
+    /**
+     * Three material Dots Indicators for view pagers in Android
+     * */
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 }

@@ -5,8 +5,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import wiut.id00010174.workouttracker.R;
 import wiut.id00010174.workouttracker.data.local.repository.UseDataRepository;
-import wiut.id00010174.workouttracker.data.local.room.entity.DailyData;
+import wiut.id00010174.workouttracker.data.models.welcome_page.WelcomePageModel;
 import wiut.id00010174.workouttracker.domain.welcome_page.WelcomePageUseCase;
 
 /**
@@ -24,11 +25,15 @@ public class WelcomePageUseCaseImpl implements WelcomePageUseCase {
 
     @Override
     public void createSampleData() {
-        List<DailyData> list = new ArrayList<>();
-        list.add(new DailyData(1, "2020.12.10 10:25"));
-        list.add(new DailyData(2, "2020.12.10 10:25"));
-        list.add(new DailyData(3, "2020.12.10 10:25"));
-        list.add(new DailyData(4, "2020.12.10 10:25"));
-        repository.createSampleData(list);
+
+    }
+
+    @Override
+    public List<WelcomePageModel> getWelcomePageModels() {
+        List<WelcomePageModel> list = new ArrayList<>();
+        list.add(new WelcomePageModel(R.string.welcome_title_1, R.string.welcome_subtitle_1, R.drawable.daily_task_2));
+        list.add(new WelcomePageModel(R.string.welcome_title_2, R.string.welcome_subtitle_2, R.drawable.schedule));
+        list.add(new WelcomePageModel(R.string.welcome_title_3, R.string.welcome_subtitle_3, R.drawable.rocket));
+        return list;
     }
 }

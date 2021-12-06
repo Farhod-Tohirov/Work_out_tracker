@@ -7,7 +7,7 @@ import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.components.SingletonComponent;
 import wiut.id00010174.workouttracker.data.local.room.AppDatabase;
-import wiut.id00010174.workouttracker.data.local.room.dao.DailyDao;
+import wiut.id00010174.workouttracker.data.local.room.dao.ProgramDao;
 
 /**
  * Created by Farhod Tohirov on 01-December-2021, 17-31
@@ -24,7 +24,7 @@ public class AppDatabaseModule {
 
     @Provides
     @Singleton
-    DailyDao getDailyDao(AppDatabase database) {
-        return database.dailyDao();
+    ProgramDao getProgramDao(AppDatabase database) {
+        return database.programDao();
     }
 }

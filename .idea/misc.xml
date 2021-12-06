@@ -4,7 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/f.tokhirov/AndroidStudioProjects/Workouttracker/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/f.tokhirov/AndroidStudioProjects/Workouttracker/app/src/main/res/layout/dialog_about_program_data.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/f.tokhirov/AndroidStudioProjects/Workouttracker/app/src/main/res/layout/fragment_add_program.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/f.tokhirov/AndroidStudioProjects/Workouttracker/app/src/main/res/layout/fragment_edit_program.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/f.tokhirov/AndroidStudioProjects/Workouttracker/app/src/main/res/layout/fragment_habit.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/f.tokhirov/AndroidStudioProjects/Workouttracker/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/f.tokhirov/AndroidStudioProjects/Workouttracker/app/src/main/res/layout/fragment_program.xml" value="0.33" />
         <entry key="..\:/Users/f.tokhirov/AndroidStudioProjects/Workouttracker/app/src/main/res/layout/fragment_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/f.tokhirov/AndroidStudioProjects/Workouttracker/app/src/main/res/layout/fragment_update_program.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/f.tokhirov/AndroidStudioProjects/Workouttracker/app/src/main/res/layout/fragment_welcome_page.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/f.tokhirov/AndroidStudioProjects/Workouttracker/app/src/main/res/layout/layout_program_item.xml" value="0.33" />
+        <entry key="..\:/Users/f.tokhirov/AndroidStudioProjects/Workouttracker/app/src/main/res/layout/layout_welcome_page_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/f.tokhirov/AndroidStudioProjects/Workouttracker/app/src/main/res/layout/spinner_text_view.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
