@@ -65,24 +65,24 @@ public class AddProgramFragment extends Fragment {
         });
 
         binding.createButton.setOnClickListener(v -> {
-            if (binding.title.getText() == null) {
+            if (binding.title.getText() == null || binding.title.getText().toString().isEmpty()) {
                 showToast(getString(R.string.choose_program_name));
                 return;
             }
             String title = binding.title.getText().toString();
-            if (binding.startedTime.getText() == null) {
+            if (binding.startedTime.getText() == null || binding.startedTime.getText().toString().isEmpty()) {
                 showToast(getString(R.string.choose_started_time));
                 return;
             }
             String startedTime = binding.startedTime.getText().toString();
 
-            if (binding.finishedTime.getText() == null) {
+            if (binding.finishedTime.getText() == null || binding.finishedTime.getText().toString().isEmpty()) {
                 showToast(getString(R.string.choose_finished_time));
                 return;
             }
             String finishedTime = binding.finishedTime.getText().toString();
 
-            if (binding.numberOfTimes.getText() == null) {
+            if (binding.numberOfTimes.getText() == null || binding.numberOfTimes.getText().toString().isEmpty()) {
                 showToast(getString(R.string.choose_number_of_times));
                 return;
             }
@@ -114,7 +114,6 @@ public class AddProgramFragment extends Fragment {
     }
 
     private final Observer<Boolean> closeScreenObserver = status -> {
-        navController.getPreviousBackStackEntry().getSavedStateHandle().set(AddProgramFragment.class.getName(), Bundle.EMPTY);
         navController.popBackStack();
     };
 

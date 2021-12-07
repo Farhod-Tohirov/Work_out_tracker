@@ -3,8 +3,6 @@ package wiut.id00010174.workouttracker.presentation.ui.adapters.program;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -25,7 +23,7 @@ import wiut.id00010174.workouttracker.utils.helpers.OnClickListenerItem;
  * Created by Farhod Tohirov on 06-December-2021, 14-37
  **/
 
-public class ProgramsRVAdapter extends ListAdapter<ProgramData, ProgramsRVAdapter.ViewHolder> implements Filterable {
+public class ProgramsRVAdapter extends ListAdapter<ProgramData, ProgramsRVAdapter.ViewHolder> {
 
     private static OnClickListenerItem<ProgramData> clickListener;
 
@@ -95,48 +93,32 @@ public class ProgramsRVAdapter extends ListAdapter<ProgramData, ProgramsRVAdapte
         }
     }
 
-    private static List<ProgramData> allPrograms;
+    private List<ProgramData> allPrograms;
 
     public void submitAllPrograms(List<ProgramData> list) {
         submitList(list);
-        allPrograms = new ArrayList(list);
+        allPrograms = new ArrayList<>(list);
     }
 
-    @Override
-    public Filter getFilter() {
-        return filter;
-    }
-
-    private final Filter filter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            List<ProgramData> filteredList = new ArrayList<>();
-            if (constraint == null || constraint.toString().isEmpty()) {
-                filteredList.addAll(allPrograms);
-            } else {
-                String letter = constraint.toString().toLowerCase(Locale.ROOT).trim();
-                for (ProgramData program : allPrograms) {
-                    if (program.getTitle().toLowerCase(Locale.ROOT).contains(letter) || program.getAdditionalNotes().toLowerCase(Locale.ROOT).contains(letter) || program.getStartedTime().toLowerCase(Locale.ROOT).contains(letter)
-                            || program.getFinishedTime().toLowerCase(Locale.ROOT).contains(letter) || program.getExperience().toLowerCase(Locale.ROOT).contains(letter)) {
-                        filteredList.add(program);
-                    }
+    public void filter(CharSequence constraint) {
+        List<ProgramData> filteredList = new ArrayList<>();
+        if (constraint == null || constraint.toString().isEmpty()) {
+            filteredList.addAll(allPrograms);
+        } else {
+            String letter = constraint.toString().toLowerCase(Locale.ROOT).trim();
+            for (ProgramData program : getCurrentList()) {
+                boolean t = program.getTitle().toLowerCase(Locale.ROOT).contains(letter)
+                        || (program.getAdditionalNotes() != null && program.getAdditionalNotes().toLowerCase(Locale.ROOT).contains(letter))
+                        || program.getStartedTime().toLowerCase(Locale.ROOT).contains(letter)
+                        || program.getFinishedTime().toLowerCase(Locale.ROOT).contains(letter)
+                        || program.getExperience().toLowerCase(Locale.ROOT).contains(letter);
+                if (t) {
+                    filteredList.add(program);
                 }
             }
-            FilterResults result = new FilterResults();
-            result.values = filteredList;
-            return result;
         }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            ArrayList<ProgramData> ls = new ArrayList<>();
-            if (results != null && results.values != null) {
-                if (results.values instanceof List)
-                    ls.addAll((List<ProgramData>) results.values);
-            }
-            ProgramsRVAdapter.super.submitList(ls);
-        }
-    };
+        submitList(filteredList);
+    }
 
     public static final DiffUtil.ItemCallback<ProgramData> DIFF_CALLBACK = new DiffUtil.ItemCallback<ProgramData>() {
         @Override

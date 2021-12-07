@@ -1,5 +1,6 @@
 package wiut.id00010174.workouttracker.presentation.ui.screen.home.programs;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -24,8 +25,6 @@ import wiut.id00010174.workouttracker.R;
 import wiut.id00010174.workouttracker.data.local.room.entity.ProgramData;
 import wiut.id00010174.workouttracker.databinding.FragmentProgramBinding;
 import wiut.id00010174.workouttracker.presentation.ui.adapters.program.ProgramsRVAdapter;
-import wiut.id00010174.workouttracker.presentation.ui.screen.home.programs.add_program.AddProgramFragment;
-import wiut.id00010174.workouttracker.presentation.ui.screen.home.programs.program_update.UpdateProgramFragment;
 import wiut.id00010174.workouttracker.presentation.ui.screen.home.programs.show_program.ShowProgramDialog;
 import wiut.id00010174.workouttracker.presentation.viewmodels.home.all_program.ProgramViewModel;
 import wiut.id00010174.workouttracker.presentation.viewmodels.home.all_program.impl.ProgramViewModelImpl;
@@ -39,7 +38,7 @@ public class ProgramsFragment extends Fragment {
     private FragmentProgramBinding binding;
     private ProgramViewModel viewModel;
     private NavController navController;
-    private final ProgramsRVAdapter programsAdapter = new ProgramsRVAdapter();
+    private ProgramsRVAdapter programsAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,21 +60,13 @@ public class ProgramsFragment extends Fragment {
     }
 
     private void loadViews() {
+        programsAdapter = new ProgramsRVAdapter();
+        viewModel.getPrograms();
         navController = Navigation.findNavController(requireActivity(), R.id.fragmentContainerView);
         binding.programList.setAdapter(programsAdapter);
 
         binding.addButton.setOnClickListener(v -> {
             navController.navigate(R.id.action_homeFragment_to_addProgramFragment);
-        });
-
-        navController.getCurrentBackStackEntry().getSavedStateHandle().getLiveData(AddProgramFragment.class.getName()).observe(getViewLifecycleOwner(), o -> {
-            viewModel.getPrograms();
-            navController.getCurrentBackStackEntry().getSavedStateHandle().remove(AddProgramFragment.class.getName());
-        });
-
-        navController.getCurrentBackStackEntry().getSavedStateHandle().getLiveData(UpdateProgramFragment.class.getName()).observe(getViewLifecycleOwner(), o -> {
-            viewModel.getPrograms();
-            navController.getCurrentBackStackEntry().getSavedStateHandle().remove(AddProgramFragment.class.getName());
         });
 
         programsAdapter.setOnClickListener(data -> {
@@ -87,6 +78,7 @@ public class ProgramsFragment extends Fragment {
                 viewModel.deleteProgram(deleteData);
             }).show();
         });
+
         binding.searchPanel.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -95,12 +87,13 @@ public class ProgramsFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if (s != null)
+                    programsAdapter.filter(s);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                programsAdapter.getFilter().filter(s);
+
             }
         });
     }
@@ -109,8 +102,9 @@ public class ProgramsFragment extends Fragment {
         return new NavOptions.Builder().setEnterAnim(R.anim.slide_in_right).setExitAnim(R.anim.slide_out_left).setPopEnterAnim(R.anim.slide_in_left).setPopExitAnim(R.anim.slide_out_right).build();
     }
 
+    @SuppressLint("FragmentLiveDataObserve")
     private void loadObservers() {
-        viewModel.programsLiveData().observe(getViewLifecycleOwner(), programsListObserver);
+        viewModel.programsLiveData().observe(this, programsListObserver);
     }
 
     private final Observer<List<ProgramData>> programsListObserver = programData -> {
@@ -120,6 +114,7 @@ public class ProgramsFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        binding.programList.setAdapter(null);
         binding = null;
     }
 }

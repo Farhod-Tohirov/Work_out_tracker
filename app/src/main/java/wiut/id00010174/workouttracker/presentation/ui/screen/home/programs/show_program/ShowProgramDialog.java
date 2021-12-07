@@ -29,7 +29,7 @@ public class ShowProgramDialog extends AlertDialog {
         binding.programData.experience.setText(binding.getRoot().getContext().getString(R.string.experience_n, data.getExperience()));
         binding.programData.numberOfTimes.setText(binding.getRoot().getContext().getString(R.string.n_times, data.getNumberOfTimes()));
         binding.programData.title.setText(data.getTitle());
-        if (data.getAdditionalNotes().isEmpty() || data.getAdditionalNotes() == null) {
+        if (data.getAdditionalNotes() == null || data.getAdditionalNotes().isEmpty()) {
             binding.programData.subTitle.setVisibility(View.GONE);
         } else {
             binding.programData.subTitle.setVisibility(View.VISIBLE);
