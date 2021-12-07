@@ -25,7 +25,7 @@ public class WelcomePageUseCaseImpl implements WelcomePageUseCase {
 
     @Override
     public void createSampleData() {
-
+        repository.createSampleData();
     }
 
     @Override

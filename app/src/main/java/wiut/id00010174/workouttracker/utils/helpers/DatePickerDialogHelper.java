@@ -32,7 +32,7 @@ public class DatePickerDialogHelper {
             if (dayOfMonth <= 9) {
                 selectedTime += "0";
             }
-            selectedTime += String.valueOf(dayOfMonth + 1);
+            selectedTime += String.valueOf(dayOfMonth);
             selectedTime += ".";
             if (month <= 9) {
                 selectedTime += "0";

@@ -42,7 +42,10 @@ public class UserDataRepositoryImpl implements UseDataRepository {
     @Override
     public void createSampleData() {
         executors.execute(() -> {
-
+            programDao.createProgramData(new ProgramData("Went to gym today", "10.02.2021", "03.12.2021", 4, "Good", "Went to gym today after breakfast to save your helath and money"));
+            programDao.createProgramData(new ProgramData("Swim after launch", "12.03.2021", "03.03.2021", 7, "Excellent", "Swam after launch with friends so many times, just for relax"));
+            programDao.createProgramData(new ProgramData("Eat a lot today", "13.02.2021", "02.14.2021", 4, "Bad", "I ate a lot of fruits and vegetable today"));
+            programDao.createProgramData(new ProgramData("Last check for some thing", "10.02.2021", "03.12.2021", 4, "Not very bad", null));
         });
     }
 

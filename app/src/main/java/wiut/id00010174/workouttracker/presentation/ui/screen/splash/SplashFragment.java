@@ -1,5 +1,7 @@
 package wiut.id00010174.workouttracker.presentation.ui.screen.splash;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -21,6 +23,7 @@ public class SplashFragment extends Fragment {
 
     private FragmentSplashBinding binding;
     NavController navController;
+    Boolean firstTime = true;
 
     @Nullable
     @Override
@@ -32,6 +35,14 @@ public class SplashFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         navController = Navigation.findNavController(view);
+
+        if (getContext().getSharedPreferences("LocalStorage", Context.MODE_PRIVATE) != null) {
+            SharedPreferences preferences = getContext().getSharedPreferences("LocalStorage", Context.MODE_PRIVATE);
+            if (preferences != null) {
+                firstTime = preferences.getBoolean("isItFirstTime", true);
+            }
+        }
+
         try {
             new CountDownTimer(1000, 10) {
                 @Override
@@ -40,12 +51,19 @@ public class SplashFragment extends Fragment {
 
                 @Override
                 public void onFinish() {
-                    navController.navigate(R.id.action_splashFragment_to_welcomePage);
+                    navigateNextScreen();
                 }
             }.start();
         } catch (Exception e) {
-            navController.navigate(R.id.action_splashFragment_to_welcomePage);
+            navigateNextScreen();
         }
+    }
+
+    private void navigateNextScreen() {
+        if (firstTime)
+            navController.navigate(R.id.action_splashFragment_to_welcomePage);
+        else
+            navController.navigate(R.id.action_splashFragment_to_homeFragment);
     }
 
     @Override

@@ -60,7 +60,7 @@ public class ProgramsRVAdapter extends ListAdapter<ProgramData, ProgramsRVAdapte
             binding.experience.setText(binding.getRoot().getContext().getString(R.string.experience_n, data.getExperience()));
             binding.numberOfTimes.setText(binding.getRoot().getContext().getString(R.string.n_times, data.getNumberOfTimes()));
             binding.title.setText(data.getTitle());
-            if (data.getAdditionalNotes().isEmpty() || data.getAdditionalNotes() == null) {
+            if (data.getAdditionalNotes() == null || data.getAdditionalNotes().isEmpty()) {
                 binding.subTitle.setVisibility(View.GONE);
             } else {
                 binding.subTitle.setVisibility(View.VISIBLE);

@@ -1,5 +1,6 @@
 package wiut.id00010174.workouttracker.presentation.ui.screen.welcome;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,6 +74,7 @@ public class WelcomePageFragment extends Fragment {
             }
         });
         binding.dots.setViewPager2(binding.viewPager);
+        getContext().getSharedPreferences("LocalStorage", Context.MODE_PRIVATE).edit().putBoolean("isItFirstTime", false).apply();
     }
 
     private void loadObservers() {
