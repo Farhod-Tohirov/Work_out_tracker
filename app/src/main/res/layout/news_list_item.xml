@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CARD_INPUT_STYLE"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="125dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/rocket" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/gradient_black_background"
+            app:layout_constraintBottom_toBottomOf="@id/image"
+            app:layout_constraintLeft_toLeftOf="@id/image"
+            app:layout_constraintRight_toRightOf="@id/image"
+            app:layout_constraintTop_toTopOf="@id/image" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title"
+            style="@style/TEXT_LARGE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="start"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:shadowColor="#73000000"
+            android:shadowDx="1"
+            android:shadowDy="5"
+            android:shadowRadius="4"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/image"
+            tools:text="Example news title goes here" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/subTitle"
+            style="@style/TEXT_MEDIUM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxLines="3"
+            android:paddingLeft="8dp"
+            android:paddingTop="6dp"
+            android:paddingRight="8dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            tools:text="Example news subtitle goes here" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/moreInformation"
+            style="@style/TEXT_LARGE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="start"
+            android:paddingStart="8dp"
+            android:paddingEnd="4dp"
+            android:text="@string/more_information"
+            android:textColor="@color/red"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

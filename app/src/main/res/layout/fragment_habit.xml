@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/awful" />
+
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/TEXT_LARGE"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/this_page_is_not_completed_yet"
+        android:textColor="@color/red" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

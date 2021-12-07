@@ -4,8 +4,8 @@ import dagger.Binds;
 import dagger.Module;
 import dagger.hilt.InstallIn;
 import dagger.hilt.components.SingletonComponent;
-import wiut.id00010174.workouttracker.data.local.repository.UseDataRepository;
-import wiut.id00010174.workouttracker.data.local.repository.impl.UserDataRepositoryImpl;
+import wiut.id00010174.workouttracker.data.repository.UseDataRepository;
+import wiut.id00010174.workouttracker.data.repository.impl.UserDataRepositoryImpl;
 
 /**
  * Created by Farhod Tohirov on 06-December-2021, 10-57

@@ -6,8 +6,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import wiut.id00010174.workouttracker.R;
-import wiut.id00010174.workouttracker.data.local.repository.UseDataRepository;
 import wiut.id00010174.workouttracker.data.models.welcome_page.WelcomePageModel;
+import wiut.id00010174.workouttracker.data.repository.UseDataRepository;
 import wiut.id00010174.workouttracker.domain.welcome_page.WelcomePageUseCase;
 
 /**

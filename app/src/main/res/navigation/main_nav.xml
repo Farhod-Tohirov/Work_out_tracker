@@ -38,6 +38,16 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutAppFragment"
+            app:destination="@id/aboutAppFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
     </fragment>
     <fragment
         android:id="@+id/welcomePage"
@@ -68,4 +78,14 @@
             android:name="programId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="wiut.id00010174.workouttracker.presentation.ui.screen.about_app.AboutAppFragment"
+        android:label="fragment_about_app"
+        tools:layout="@layout/fragment_about_app" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="wiut.id00010174.workouttracker.presentation.ui.screen.news.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
 </navigation>

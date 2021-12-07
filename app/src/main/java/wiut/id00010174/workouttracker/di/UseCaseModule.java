@@ -6,6 +6,8 @@ import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ViewModelComponent;
 import wiut.id00010174.workouttracker.domain.home.program.ProgramsUseCase;
 import wiut.id00010174.workouttracker.domain.home.program.impl.ProgramsUseCaseImpl;
+import wiut.id00010174.workouttracker.domain.news.NewsUseCase;
+import wiut.id00010174.workouttracker.domain.news.impl.NewsUseCaseImpl;
 import wiut.id00010174.workouttracker.domain.welcome_page.WelcomePageUseCase;
 import wiut.id00010174.workouttracker.domain.welcome_page.impl.WelcomePageUseCaseImpl;
 
@@ -21,4 +23,7 @@ public interface UseCaseModule {
 
     @Binds
     ProgramsUseCase getProgramUseCase(ProgramsUseCaseImpl useCase);
+
+    @Binds
+    NewsUseCase getNewsUseCase(NewsUseCaseImpl useCase);
 }

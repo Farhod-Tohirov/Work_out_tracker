@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -35,6 +36,7 @@ public class ProgramViewModelImpl extends ViewModel implements ProgramViewModel 
 
     @Override
     public void getPrograms() {
+        programs.setValue(Collections.emptyList());
         useCase.getPrograms(programs::setValue);
     }
 

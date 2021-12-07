@@ -1,6 +1,8 @@
 package wiut.id00010174.workouttracker.presentation.ui.screen.home.programs;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -33,15 +36,10 @@ import wiut.id00010174.workouttracker.presentation.viewmodels.home.all_program.i
 @AndroidEntryPoint
 public class ProgramsFragment extends Fragment {
 
-    private final ProgramsRVAdapter programsAdapter = new ProgramsRVAdapter();
-    private final Observer<List<ProgramData>> programsListObserver = programData -> {
-        List<ProgramData> t = programData;
-
-        programsAdapter.submitList(programData);
-    };
     private FragmentProgramBinding binding;
     private ProgramViewModel viewModel;
     private NavController navController;
+    private final ProgramsRVAdapter programsAdapter = new ProgramsRVAdapter();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,6 +87,22 @@ public class ProgramsFragment extends Fragment {
                 viewModel.deleteProgram(deleteData);
             }).show();
         });
+        binding.searchPanel.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                programsAdapter.getFilter().filter(s);
+            }
+        });
     }
 
     private NavOptions getAnimationNavOptions() {
@@ -98,6 +112,10 @@ public class ProgramsFragment extends Fragment {
     private void loadObservers() {
         viewModel.programsLiveData().observe(getViewLifecycleOwner(), programsListObserver);
     }
+
+    private final Observer<List<ProgramData>> programsListObserver = programData -> {
+        programsAdapter.submitAllPrograms(new ArrayList<>(programData));
+    };
 
     @Override
     public void onDestroyView() {

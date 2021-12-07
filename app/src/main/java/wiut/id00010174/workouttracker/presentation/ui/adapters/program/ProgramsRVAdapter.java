@@ -3,11 +3,17 @@ package wiut.id00010174.workouttracker.presentation.ui.adapters.program;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import wiut.id00010174.workouttracker.R;
 import wiut.id00010174.workouttracker.data.local.room.entity.ProgramData;
@@ -19,23 +25,8 @@ import wiut.id00010174.workouttracker.utils.helpers.OnClickListenerItem;
  * Created by Farhod Tohirov on 06-December-2021, 14-37
  **/
 
-public class ProgramsRVAdapter extends ListAdapter<ProgramData, ProgramsRVAdapter.ViewHolder> {
+public class ProgramsRVAdapter extends ListAdapter<ProgramData, ProgramsRVAdapter.ViewHolder> implements Filterable {
 
-    public static final DiffUtil.ItemCallback<ProgramData> DIFF_CALLBACK = new DiffUtil.ItemCallback<ProgramData>() {
-        @Override
-        public boolean areItemsTheSame(@NonNull ProgramData oldUser, @NonNull ProgramData newUser) {
-            // User properties may have changed if reloaded from the DB, but ID is fixed
-            return oldUser.getId() == newUser.getId();
-        }
-
-        @Override
-        public boolean areContentsTheSame(@NonNull ProgramData oldUser, @NonNull ProgramData newUser) {
-            // NOTE: if you use equals, your object must properly override Object#equals()
-            // Incorrectly returning false here will result in too many animations.
-            return oldUser.getTitle().equals(newUser.getTitle()) || oldUser.getStartedTime().equals(newUser.getStartedTime()) || oldUser.getFinishedTime().equals(newUser.getFinishedTime()) ||
-                    oldUser.getNumberOfTimes() == newUser.getNumberOfTimes() || oldUser.getAdditionalNotes().equals(newUser.getAdditionalNotes()) || oldUser.getExperience().equals(newUser.getExperience());
-        }
-    };
     private static OnClickListenerItem<ProgramData> clickListener;
 
     public ProgramsRVAdapter() {
@@ -103,5 +94,64 @@ public class ProgramsRVAdapter extends ListAdapter<ProgramData, ProgramsRVAdapte
             });
         }
     }
+
+    private static List<ProgramData> allPrograms;
+
+    public void submitAllPrograms(List<ProgramData> list) {
+        submitList(list);
+        allPrograms = new ArrayList(list);
+    }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private final Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<ProgramData> filteredList = new ArrayList<>();
+            if (constraint == null || constraint.toString().isEmpty()) {
+                filteredList.addAll(allPrograms);
+            } else {
+                String letter = constraint.toString().toLowerCase(Locale.ROOT).trim();
+                for (ProgramData program : allPrograms) {
+                    if (program.getTitle().toLowerCase(Locale.ROOT).contains(letter) || program.getAdditionalNotes().toLowerCase(Locale.ROOT).contains(letter) || program.getStartedTime().toLowerCase(Locale.ROOT).contains(letter)
+                            || program.getFinishedTime().toLowerCase(Locale.ROOT).contains(letter) || program.getExperience().toLowerCase(Locale.ROOT).contains(letter)) {
+                        filteredList.add(program);
+                    }
+                }
+            }
+            FilterResults result = new FilterResults();
+            result.values = filteredList;
+            return result;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            ArrayList<ProgramData> ls = new ArrayList<>();
+            if (results != null && results.values != null) {
+                if (results.values instanceof List)
+                    ls.addAll((List<ProgramData>) results.values);
+            }
+            ProgramsRVAdapter.super.submitList(ls);
+        }
+    };
+
+    public static final DiffUtil.ItemCallback<ProgramData> DIFF_CALLBACK = new DiffUtil.ItemCallback<ProgramData>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull ProgramData oldUser, @NonNull ProgramData newUser) {
+            // User properties may have changed if reloaded from the DB, but ID is fixed
+            return oldUser.getId() == newUser.getId();
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull ProgramData oldUser, @NonNull ProgramData newUser) {
+            // NOTE: if you use equals, your object must properly override Object#equals()
+            // Incorrectly returning false here will result in too many animations.
+            return oldUser.getTitle().equals(newUser.getTitle()) || oldUser.getStartedTime().equals(newUser.getStartedTime()) || oldUser.getFinishedTime().equals(newUser.getFinishedTime()) ||
+                    oldUser.getNumberOfTimes() == newUser.getNumberOfTimes() || oldUser.getAdditionalNotes().equals(newUser.getAdditionalNotes()) || oldUser.getExperience().equals(newUser.getExperience());
+        }
+    };
 
 }

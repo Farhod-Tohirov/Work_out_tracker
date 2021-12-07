@@ -18,7 +18,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField('String', 'BASE_URL', '"https://newsdata.io/api/1/"')
+            buildConfigField('String', 'NEWS_API_KEY', '"pub_261628aee93eec7db6174ac2957a959a2454"')
+        }
         release {
+            buildConfigField('String', 'NEWS_API_KEY', '"pub_261628aee93eec7db6174ac2957a959a2454"')
+            buildConfigField('String', 'BASE_URL', '"https://newsdata.io/api/1/"')
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -67,4 +73,20 @@ dependencies {
      * Three material Dots Indicators for view pagers in Android
      * */
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
+
+    /***
+     * Retrofit and GSON
+     * */
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.8.9'
+
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
+    /**
+     *  Glide
+     * */
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
 }

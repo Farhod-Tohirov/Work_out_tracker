@@ -34,6 +34,14 @@
     <string name="about_program">About program</string>
     <string name="edit_program">Edit program</string>
     <string name="save">Save</string>
+    <string name="this_app_is_created_to_get_full_mark">This app is created to get full mark 😊</string>
+    <string name="about_app">About app</string>
+    <string name="quit">Quit</string>
+    <string name="news">News</string>
+    <string name="about_app_text">With This app you can save your daily routine and your exercises. It can save your data in phone\'s memory. You can use with-out internet. Only to access news you must have internet.</string>
+    <string name="created_by_00010174">Created by 00010174</string>
+    <string name="more_information">More information…</string>
+    <string name="this_page_is_not_completed_yet">This page is not completed yet.</string>
     <string-array name="experience">
         <item>Experience…</item>
         <item>Excellent</item>

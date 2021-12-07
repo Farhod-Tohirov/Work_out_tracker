@@ -27,10 +27,6 @@ public class AddProgramFragment extends Fragment {
 
     private FragmentAddProgramBinding binding;
     private NavController navController;
-    private final Observer<Boolean> closeScreenObserver = status -> {
-        navController.getPreviousBackStackEntry().getSavedStateHandle().set(AddProgramFragment.class.getName(), Bundle.EMPTY);
-        navController.popBackStack();
-    };
     private AddProgramViewModel viewModel;
 
     @Override
@@ -116,6 +112,11 @@ public class AddProgramFragment extends Fragment {
     private void loadObservers() {
         viewModel.closeScreenLiveData().observe(this, closeScreenObserver);
     }
+
+    private final Observer<Boolean> closeScreenObserver = status -> {
+        navController.getPreviousBackStackEntry().getSavedStateHandle().set(AddProgramFragment.class.getName(), Bundle.EMPTY);
+        navController.popBackStack();
+    };
 
     @Override
     public void onDestroyView() {

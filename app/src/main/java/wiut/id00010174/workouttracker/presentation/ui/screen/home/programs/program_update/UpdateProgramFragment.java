@@ -27,27 +27,7 @@ import wiut.id00010174.workouttracker.utils.helpers.DatePickerDialogHelper;
 public class UpdateProgramFragment extends Fragment {
 
     private FragmentUpdateProgramBinding binding;
-    private final Observer<ProgramData> programDataObserver = programData -> {
-        binding.title.setText(programData.getTitle());
-        binding.startedTime.setText(programData.getStartedTime());
-        binding.finishedTime.setText(programData.getFinishedTime());
-        binding.numberOfTimes.setText(String.valueOf(programData.getNumberOfTimes()));
-        binding.moreInfo.setText(programData.getAdditionalNotes());
-        String[] experiences = getActivity().getResources().getStringArray(R.array.experience);
-        int index = 0;
-        for (int i = 0; i < experiences.length; i++) {
-            if (experiences[i].equals(programData.getExperience())) {
-                index = i;
-                break;
-            }
-        }
-        binding.experienceList.setSelection(index);
-    };
     private NavController navController;
-    private final Observer<Boolean> closeScreenObserver = status -> {
-        navController.getPreviousBackStackEntry().getSavedStateHandle().set(UpdateProgramFragment.class.getName(), Bundle.EMPTY);
-        navController.popBackStack();
-    };
     private UpdateProgramViewModel viewModel;
     private int programId = -1;
 
@@ -137,6 +117,28 @@ public class UpdateProgramFragment extends Fragment {
         viewModel.programDataLiveData().observe(getViewLifecycleOwner(), programDataObserver);
         viewModel.closeScreenLiveData().observe(this, closeScreenObserver);
     }
+
+    private final Observer<ProgramData> programDataObserver = programData -> {
+        binding.title.setText(programData.getTitle());
+        binding.startedTime.setText(programData.getStartedTime());
+        binding.finishedTime.setText(programData.getFinishedTime());
+        binding.numberOfTimes.setText(String.valueOf(programData.getNumberOfTimes()));
+        binding.moreInfo.setText(programData.getAdditionalNotes());
+        String[] experiences = getActivity().getResources().getStringArray(R.array.experience);
+        int index = 0;
+        for (int i = 0; i < experiences.length; i++) {
+            if (experiences[i].equals(programData.getExperience())) {
+                index = i;
+                break;
+            }
+        }
+        binding.experienceList.setSelection(index);
+    };
+
+    private final Observer<Boolean> closeScreenObserver = status -> {
+        navController.getPreviousBackStackEntry().getSavedStateHandle().set(UpdateProgramFragment.class.getName(), Bundle.EMPTY);
+        navController.popBackStack();
+    };
 
     @Override
     public void onDestroyView() {
