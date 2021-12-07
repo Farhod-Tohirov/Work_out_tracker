@@ -16,4 +16,6 @@ public interface ProgramViewModel {
     void getPrograms();
 
     void deleteProgram(ProgramData data);
+
+    void filterPrograms(CharSequence constraint);
 }

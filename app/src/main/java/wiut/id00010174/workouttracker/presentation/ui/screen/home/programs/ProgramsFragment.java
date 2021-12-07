@@ -87,8 +87,7 @@ public class ProgramsFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s != null)
-                    programsAdapter.filter(s);
+                viewModel.filterPrograms(s);
             }
 
             @Override
@@ -108,7 +107,7 @@ public class ProgramsFragment extends Fragment {
     }
 
     private final Observer<List<ProgramData>> programsListObserver = programData -> {
-        programsAdapter.submitAllPrograms(new ArrayList<>(programData));
+        programsAdapter.submitList(new ArrayList<>(programData));
     };
 
     @Override

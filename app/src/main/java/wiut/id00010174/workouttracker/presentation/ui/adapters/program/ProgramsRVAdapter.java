@@ -9,10 +9,6 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
 import wiut.id00010174.workouttracker.R;
 import wiut.id00010174.workouttracker.data.local.room.entity.ProgramData;
 import wiut.id00010174.workouttracker.databinding.LayoutProgramItemBinding;
@@ -91,33 +87,6 @@ public class ProgramsRVAdapter extends ListAdapter<ProgramData, ProgramsRVAdapte
                 clickListener.click(data);
             });
         }
-    }
-
-    private List<ProgramData> allPrograms;
-
-    public void submitAllPrograms(List<ProgramData> list) {
-        submitList(list);
-        allPrograms = new ArrayList<>(list);
-    }
-
-    public void filter(CharSequence constraint) {
-        List<ProgramData> filteredList = new ArrayList<>();
-        if (constraint == null || constraint.toString().isEmpty()) {
-            filteredList.addAll(allPrograms);
-        } else {
-            String letter = constraint.toString().toLowerCase(Locale.ROOT).trim();
-            for (ProgramData program : getCurrentList()) {
-                boolean t = program.getTitle().toLowerCase(Locale.ROOT).contains(letter)
-                        || (program.getAdditionalNotes() != null && program.getAdditionalNotes().toLowerCase(Locale.ROOT).contains(letter))
-                        || program.getStartedTime().toLowerCase(Locale.ROOT).contains(letter)
-                        || program.getFinishedTime().toLowerCase(Locale.ROOT).contains(letter)
-                        || program.getExperience().toLowerCase(Locale.ROOT).contains(letter);
-                if (t) {
-                    filteredList.add(program);
-                }
-            }
-        }
-        submitList(filteredList);
     }
 
     public static final DiffUtil.ItemCallback<ProgramData> DIFF_CALLBACK = new DiffUtil.ItemCallback<ProgramData>() {
